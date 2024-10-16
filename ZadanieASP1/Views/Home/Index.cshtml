@@ -1,0 +1,37 @@
+﻿@using ZadanieASP1.ViewModel;
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+@model IEnumerable<TripDetailViewModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div style="margin-top: 0;" class="text-center">
+    <h1 class="display-4" style="font-size: 28px;">@Localizer["header1Home"]</h1>
+</div>
+
+<div class="tripsPanel" style="margin: 10px auto 25px auto;">
+
+    @foreach (var trip in @Model)
+    {
+        <div class="tripInfo"> 
+            <a asp-action="Detail" asp-controller="Home" asp-route-id="@trip.Id">
+            <div class="tripTitle"> 
+                    @trip.Title
+                </div>
+            
+                <div class="tripImg"> 
+                <img src="@trip.URLImg"/>
+                </div>
+            
+                <div class="tripPrice"> 
+                CENA: @trip.Price zł
+            </div>
+            </a>
+        </div>
+    }
+
+</div>

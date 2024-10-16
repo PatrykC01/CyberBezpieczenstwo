@@ -1,0 +1,61 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="p-5">
+            <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+            </div>
+            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="user">
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                <div class="form-group">
+                    <input asp-for="Input.Email" class="form-control form-control-user" aria-required="true" placeholder="Enter Email Address..." />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Input.UserName" class="form-control form-control-user" autocomplete="username" aria-required="true" placeholder="UserName..." />
+                    <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Input.Password" class="form-control form-control-user" autocomplete="new-password" aria-required="true" placeholder="Password" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Input.ConfirmPassword" class="form-control form-control-user" autocomplete="new-password" aria-required="true" placeholder="Repeat Password" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary btn-user btn-block">
+                    Register Account
+                </button>
+                <hr>
+                @if (Model.ExternalLogins?.Count > 0)
+                {
+                    <div>
+                        @foreach (var provider in Model.ExternalLogins)
+                        {
+                            <button type="submit" class="btn btn-google btn-user btn-block" name="provider" value="@provider.Name" title="Register using your @provider.DisplayName account">
+                                <i class="fab fa-@provider.Name.ToLower() fa-fw"></i> Register with @provider.DisplayName
+                            </button>
+                        }
+                    </div>
+                }
+            </form>
+            <div class="text-center">
+                <a class="small" asp-page="./ForgotPassword">Forgot Password?</a>
+            </div>
+            <div class="text-center">
+                <a class="small" asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Already have an account? Login!</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

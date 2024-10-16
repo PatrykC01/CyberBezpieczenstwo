@@ -1,0 +1,63 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+@model IEnumerable<ZadanieASP1.Models.ReservationViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@Localizer["Header1Reservation"]</h1>
+
+<p>
+    <a asp-action="create" class="btn btn-success btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-plus"></i>
+        </span>
+        <span class="text">@Localizer["CreateReservationBtn"]</span>
+    </a>
+</p>
+
+
+
+<div class="table-responsive">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead class="thead-dark">
+        <tr>
+                <th>@Localizer["ReservationDate"]</th>
+                <th>@Localizer["DateOfDeparture"]</th>
+                <th>@Localizer["DateOfReturn"]</th>
+                <th>@Localizer["Title"]</th>
+                <th>@Localizer["CustomerName"]</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReservationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfDeparture)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfReturn)
+                </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                    </td>
+
+                    <td style="display: flex; justify-content: center; align-items: center; gap: 25px; border: none;">
+                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.ReservationID">@Localizer["EditReservationBtn"]</a>
+                        <a class="btn btn-info" asp-action="Details" asp-route-id="@item.ReservationID">@Localizer["DetailsReservationBtn"]</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ReservationID">@Localizer["DeleteReservationBtn"]</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

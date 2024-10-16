@@ -1,0 +1,65 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+@model ZadanieASP1.Models.Reservation
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>@Localizer["Header1Reservation"]</h1>
+
+<h3>@Localizer["DeleteConfirm"]</h3>
+<div>
+    <h4>@Localizer["Header4Reservation"]</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Localizer["ReservationDate"]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ReservationDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer["DateOfDeparture"]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateOfDeparture)
+        </dd>
+        <dt class="col-sm-2">
+            @Localizer["DateOfReturn"]
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateOfReturn)
+        </dd>
+        <dt class = "col-sm-2">
+            @Localizer["TripID"]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Trip.TripID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Localizer["CustomerID"]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Customer.ID)
+        </dd>
+    </dl>
+    
+    <div style="display: flex; gap: 15px;">
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="ReservationID" />
+            <button type="submit" class="btn btn-danger">
+                @Localizer["DeleteBtn"]
+            </button>
+        </form>
+
+        <a class="btn btn-secondary btn-icon-split" asp-action="Index">
+            <span class="icon text-white-50">
+                <i class="fas fa-arrow-left"></i>
+            </span>
+            <span class="text">@Localizer["BackSpan"]</span>
+        </a>
+    </div>
+</div>

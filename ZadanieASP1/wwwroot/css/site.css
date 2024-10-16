@@ -1,0 +1,301 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+}   
+
+body {
+    min-height: 100vh;
+}
+
+footer {
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    bottom: 0;
+    padding: 15px 30px;
+    margin-top: 15px;
+}
+
+    footer .container {
+        height: 100%;
+        width: 100%;
+        font-size: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+
+        footer .container span:nth-child(2) {
+            border-left: 3px solid;
+            padding-left: 25px;
+        }
+
+        footer .container span:nth-child(3) {
+            border-left: 3px solid;
+            padding-left: 25px;
+        }
+
+        footer .container span:nth-child(4) {
+            border-left: 3px solid;
+            padding-left: 25px;
+        }
+
+.tripsPanel {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    width: calc(100% - 100px);
+    padding: 25px;
+    height: auto;
+    background-color: rgb(35, 125, 40, 0.5);
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
+
+    .tripsPanel .tripInfo {
+        border-radius: 15px;
+        box-shadow: 2px 5px 10px black;
+        width: 35%;
+        min-width: 300px;
+        height: 340px;
+        overflow: hidden;
+    }
+
+.tripInfo a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    text-decoration: none;
+    color: #fffafa;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.tripsPanel .tripInfo .tripTitle {
+    height: 100px;
+    flex: 0 0 10%;
+    background-color: rgb(235, 203, 23);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    text-align: center;
+    padding: 5px;
+}
+
+.tripsPanel .tripInfo .tripImg {
+    height: 100px;
+    flex: 1 1 auto;
+    background-color: red;
+}
+
+    .tripsPanel .tripInfo .tripImg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.tripsPanel .tripInfo .tripPrice {
+    height: 30px;
+    flex: 0 0 auto;
+    background-color: #258cfb;
+    text-align: center;
+}
+
+.detailContainer {
+    display: grid;
+    grid-template: 4fr 4fr 4fr 1fr / 1fr 1fr 1fr 1fr 1fr;
+    margin: 25px auto 25px auto;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 2px 5px 10px black;
+    background-color: yellowgreen;
+    width: 75%;
+    height: 75vh;
+}
+
+    .detailContainer img {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+       border-radius: 15px;
+    }
+    .detailContainer p {
+        margin: 10px;
+        background-color: rgba(235, 255, 234, 0.2);
+        border-radius: 15px;
+        padding: 10px;
+    }
+
+    .detailContainer p:nth-of-type(1) {
+        grid-area: 1 / 1 / 2 / 6;
+        /*background-color: red;*/
+        font-size: 2vw;
+    }
+
+    .detailContainer div {
+        grid-area: 2 / 1 / 5 / 3;
+   /*     background-color: blue;*/
+    }
+
+    .detailContainer p:nth-of-type(2) {
+        grid-area: 2 / 3 / 4 / 6;
+        font-size: 16px;
+    }
+
+    .detailContainer p:nth-of-type(3) {
+        grid-area: 4 / 3 / 5 / 4;
+        /*background-color: purple;*/
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .detailContainer p:nth-of-type(4) {
+        grid-area: 4 / 4 / 5 / 6;
+        /*background-color: green;*/
+        font-size: 25px;
+    }
+
+.table{
+    border: 3px solid;
+    box-shadow: 2px 3px 10px black;
+}
+
+table td{
+    color: black;
+    font-weight: 400;
+}
+
+dt{
+    color: black;
+}
+
+dl{
+    color: black;
+}
+
+.table thead{
+    color: black;
+    font-weight: 800;
+    background-color: rgb(154, 154, 154);
+}
+    
+   .table tbody tr:nth-child(2n){
+       background-color: #a0c78b;
+   } 
+   
+   .table tbody tr:nth-child(2n+1){
+       background-color: #b3e594;
+   }
+
+   .table tbody td:last-child{
+       min-width: 170px;
+   }
+
+.row .col-md-4 form .form-group{
+    background-color: #b3e594;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 10px;
+}
+.row .col-md-4 form .form-group input{
+    background-color: #a0c78b;
+    color: white;
+    font-weight: bold;
+}
+
+.row .col-md-4 form .form-group input:last-of-type{
+    width: 100%;
+}
+
+div .row {
+    background-color: #b3e594;
+    border: 3px solid;
+    box-shadow: 2px 3px 10px black;
+}
+
+    div .row dt {
+        background-color: #a0c78b;
+        padding: 10px 10px 10px 15px;
+        border-right: 3px solid;
+        border-bottom: 3px solid;
+    }
+div .row dd:last-of-type {
+        border: none;
+    }
+
+div .row dd:first-of-type {
+        border: none;
+    }
+    div .row dd {
+        padding: 10px 10px 10px 15px;
+        color: white;
+        border-top: 3px solid black;
+        border-bottom: 3px solid black;
+        color: white;
+        font-weight: bold;
+    }
+
+.searchBtn, .prevBtn, .nextBtn{
+    background-color: rgb(35, 125, 40);
+    color: white;
+    padding: 2px 15px;
+    border-radius: 3px;
+}
+
+.prevBtn, .nextBtn{
+    margin: 0 3px;
+    text-decoration: none;
+    user-select: none;
+    border: 1px solid black;
+}
+
+.prevBtn.disabled, .nextBtn.disabled{
+    background-color: rgba(35, 125, 40, 0.3);
+    color: #fffeee;
+    pointer-events: none;
+    cursor: default;
+    border: none;
+}
+
+th a{
+    color: #;
+}
+
+.registerBtn, .loginBtn {
+    margin-bottom: 15px;
+}
+
+.btn-lg{
+    margin-bottom: 15px;
+}
+
+#profile-form{
+    padding: 15px;
+}
+
+#change-password-form, .nav-pills, .btn.btn-danger, #Input_Email {
+}
+
+.loginAlert{
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+    box-shadow: 3px 2px 1px 1px red;
+    text-align: center;
+}

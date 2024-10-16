@@ -1,0 +1,62 @@
+﻿@page
+@model LoginModel
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="p-5">
+            <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+            </div>
+            <form id="account" method="post" class="user">
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                <div class="form-group">
+                    <input asp-for="Input.UserName" class="form-control form-control-user" aria-required="true" placeholder="Enter UserName..." />
+                    <span asp-validation-for="Input.UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Input.Password" class="form-control form-control-user" autocomplete="current-password" aria-required="true" placeholder="Password" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox small">
+                        <input class="custom-control-input" asp-for="Input.RememberMe" id="customCheck" />
+                        <label class="custom-control-label" for="customCheck">@Html.DisplayNameFor(m => m.Input.RememberMe)</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-user btn-block">
+                    @Localizer["Login"]
+                </button>
+                <hr>
+                @if (Model.ExternalLogins?.Count > 0)
+                {
+                    <div>
+                        @foreach (var provider in Model.ExternalLogins)
+                        {
+                            <button type="submit" class="btn btn-google btn-user btn-block" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                                <i class="fab fa-google fa-fw"></i> Login with @provider.DisplayName
+                            </button>
+                        }
+                    </div>
+                }
+            </form>
+            <div class="text-center">
+                <a class="small" asp-page="./ForgotPassword">Forgot Password?</a>
+            </div>
+            <div class="text-center">
+                <a class="small" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Create an Account!</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

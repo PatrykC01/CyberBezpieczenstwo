@@ -1,0 +1,167 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\20pat\\OneDrive\\Pulpit\\Szko\u0142a\\PdIwtA\\ZadanieASP1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F9D84E2E-3B08-478B-AC38-AD0A4DB75FFF}|ZadanieASP1\\ZadanieASP1.csproj|c:\\users\\20pat\\onedrive\\pulpit\\szko\u0142a\\pdiwta\\zadanieasp1\\zadanieasp1\\views\\users\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9D84E2E-3B08-478B-AC38-AD0A4DB75FFF}|ZadanieASP1\\ZadanieASP1.csproj|solutionrelative:zadanieasp1\\views\\users\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9D84E2E-3B08-478B-AC38-AD0A4DB75FFF}|ZadanieASP1\\ZadanieASP1.csproj|c:\\users\\20pat\\onedrive\\pulpit\\szko\u0142a\\pdiwta\\zadanieasp1\\zadanieasp1\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9D84E2E-3B08-478B-AC38-AD0A4DB75FFF}|ZadanieASP1\\ZadanieASP1.csproj|solutionrelative:zadanieasp1\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9D84E2E-3B08-478B-AC38-AD0A4DB75FFF}|ZadanieASP1\\ZadanieASP1.csproj|c:\\users\\20pat\\onedrive\\pulpit\\szko\u0142a\\pdiwta\\zadanieasp1\\zadanieasp1\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9D84E2E-3B08-478B-AC38-AD0A4DB75FFF}|ZadanieASP1\\ZadanieASP1.csproj|solutionrelative:zadanieasp1\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9D84E2E-3B08-478B-AC38-AD0A4DB75FFF}|ZadanieASP1\\ZadanieASP1.csproj|c:\\users\\20pat\\onedrive\\pulpit\\szko\u0142a\\pdiwta\\zadanieasp1\\zadanieasp1\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9D84E2E-3B08-478B-AC38-AD0A4DB75FFF}|ZadanieASP1\\ZadanieASP1.csproj|solutionrelative:zadanieasp1\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9D84E2E-3B08-478B-AC38-AD0A4DB75FFF}|ZadanieASP1\\ZadanieASP1.csproj|c:\\users\\20pat\\onedrive\\pulpit\\szko\u0142a\\pdiwta\\zadanieasp1\\zadanieasp1\\views\\users\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9D84E2E-3B08-478B-AC38-AD0A4DB75FFF}|ZadanieASP1\\ZadanieASP1.csproj|solutionrelative:zadanieasp1\\views\\users\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9D84E2E-3B08-478B-AC38-AD0A4DB75FFF}|ZadanieASP1\\ZadanieASP1.csproj|c:\\users\\20pat\\onedrive\\pulpit\\szko\u0142a\\pdiwta\\zadanieasp1\\zadanieasp1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F9D84E2E-3B08-478B-AC38-AD0A4DB75FFF}|ZadanieASP1\\ZadanieASP1.csproj|solutionrelative:zadanieasp1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9D84E2E-3B08-478B-AC38-AD0A4DB75FFF}|ZadanieASP1\\ZadanieASP1.csproj|c:\\users\\20pat\\onedrive\\pulpit\\szko\u0142a\\pdiwta\\zadanieasp1\\zadanieasp1\\repository\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9D84E2E-3B08-478B-AC38-AD0A4DB75FFF}|ZadanieASP1\\ZadanieASP1.csproj|solutionrelative:zadanieasp1\\repository\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 162,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\20pat\\OneDrive\\Pulpit\\Szko\u0142a\\PdIwtA\\ZadanieASP1\\ZadanieASP1\\Views\\Users\\Edit.cshtml",
+              "RelativeDocumentMoniker": "ZadanieASP1\\Views\\Users\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\20pat\\OneDrive\\Pulpit\\Szko\u0142a\\PdIwtA\\ZadanieASP1\\ZadanieASP1\\Views\\Users\\Edit.cshtml",
+              "RelativeToolTip": "ZadanieASP1\\Views\\Users\\Edit.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-16T16:31:04.373Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\20pat\\OneDrive\\Pulpit\\Szko\u0142a\\PdIwtA\\ZadanieASP1\\ZadanieASP1\\Views\\Users\\Index.cshtml",
+              "RelativeDocumentMoniker": "ZadanieASP1\\Views\\Users\\Index.cshtml",
+              "ToolTip": "C:\\Users\\20pat\\OneDrive\\Pulpit\\Szko\u0142a\\PdIwtA\\ZadanieASP1\\ZadanieASP1\\Views\\Users\\Index.cshtml",
+              "RelativeToolTip": "ZadanieASP1\\Views\\Users\\Index.cshtml",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABIAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-16T16:25:21.382Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\20pat\\OneDrive\\Pulpit\\Szko\u0142a\\PdIwtA\\ZadanieASP1\\ZadanieASP1\\Views\\Users\\Create.cshtml",
+              "RelativeDocumentMoniker": "ZadanieASP1\\Views\\Users\\Create.cshtml",
+              "ToolTip": "C:\\Users\\20pat\\OneDrive\\Pulpit\\Szko\u0142a\\PdIwtA\\ZadanieASP1\\ZadanieASP1\\Views\\Users\\Create.cshtml",
+              "RelativeToolTip": "ZadanieASP1\\Views\\Users\\Create.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-16T16:22:54.85Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\20pat\\OneDrive\\Pulpit\\Szko\u0142a\\PdIwtA\\ZadanieASP1\\ZadanieASP1\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "ZadanieASP1\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\20pat\\OneDrive\\Pulpit\\Szko\u0142a\\PdIwtA\\ZadanieASP1\\ZadanieASP1\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "ZadanieASP1\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAC8AAAAAAAAAAAASwD0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-16T16:21:56.354Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\20pat\\OneDrive\\Pulpit\\Szko\u0142a\\PdIwtA\\ZadanieASP1\\ZadanieASP1\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "ZadanieASP1\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\20pat\\OneDrive\\Pulpit\\Szko\u0142a\\PdIwtA\\ZadanieASP1\\ZadanieASP1\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "ZadanieASP1\\Controllers\\UsersController.cs",
+              "ViewState": "AQIAAEUAAAAAAAAAAAAUwF8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-16T16:14:18.669Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\20pat\\OneDrive\\Pulpit\\Szko\u0142a\\PdIwtA\\ZadanieASP1\\ZadanieASP1\\Repository\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "ZadanieASP1\\Repository\\IUserRepository.cs",
+              "ToolTip": "C:\\Users\\20pat\\OneDrive\\Pulpit\\Szko\u0142a\\PdIwtA\\ZadanieASP1\\ZadanieASP1\\Repository\\IUserRepository.cs",
+              "RelativeToolTip": "ZadanieASP1\\Repository\\IUserRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-16T16:09:41.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\20pat\\OneDrive\\Pulpit\\Szko\u0142a\\PdIwtA\\ZadanieASP1\\ZadanieASP1\\Repository\\UserRepository.cs",
+              "RelativeDocumentMoniker": "ZadanieASP1\\Repository\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\20pat\\OneDrive\\Pulpit\\Szko\u0142a\\PdIwtA\\ZadanieASP1\\ZadanieASP1\\Repository\\UserRepository.cs",
+              "RelativeToolTip": "ZadanieASP1\\Repository\\UserRepository.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAgwDIAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-16T16:04:19.439Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
