@@ -14,18 +14,27 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using ZadanieASP1.Data;
+using ZadanieASP1.Models;
+
 
 namespace ZadanieASP1.Areas.Identity.Pages.Account
 {
     public class LoginModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly TravelAgencyContext _context; // Dodaj kontekst
+        
 
-        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, ILogger<LoginModel> logger,TravelAgencyContext context)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
             _logger = logger;
+            _context = context;
         }
 
         /// <summary>
@@ -58,6 +67,8 @@ namespace ZadanieASP1.Areas.Identity.Pages.Account
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
+        
+        
         public class InputModel
         {
             /// <summary>
@@ -96,44 +107,76 @@ namespace ZadanieASP1.Areas.Identity.Pages.Account
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-
+            
             ReturnUrl = returnUrl;
         }
+
+        public async Task<bool> IsPasswordExpiredAsync(ApplicationUser user)
+        {
+            var User = await _context.Users.FindAsync(user.Id); 
+            var passwordExpiryDate = User.PasswordExpiryDate;
+ if (passwordExpiryDate.HasValue && passwordExpiryDate<DateTime.UtcNow)
+            {
+                return true; 
+            }
+            return false; 
+        }
+
+        
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
 
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            if (Input == null)
+            {
+                ModelState.AddModelError(string.Empty, "Model wejściowy nie jest zainicjowany.");
+                return Page();
+            }
 
             if (ModelState.IsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                var user = await _userManager.FindByNameAsync(Input.UserName);
+                if (user == null)
+                {
+                    ModelState.AddModelError(string.Empty, "Niepoprawna próba logowania.");
+                    return Page();
+                }
+
+                
+
+                var result = await _signInManager.PasswordSignInAsync(user, Input.Password, Input.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User logged in.");
+
+                    // Sprawdzenie, czy hasło wygasło
+                    if (await IsPasswordExpiredAsync(user))
+                    {
+                        TempData["PasswordExpiredMessage"] = "Twoje hasło wygasło. Proszę zmienić hasło, aby kontynuować.";
+                        return RedirectToPage("/Account/Manage/ChangePassword", new { userId = user.Id });
+                    }
+
+
                     return LocalRedirect(returnUrl);
                 }
-                if (result.RequiresTwoFactor)
+                else if (result.IsLockedOut)
                 {
-                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
-                }
-                if (result.IsLockedOut)
-                {
-                    _logger.LogWarning("User account locked out.");
-                    return RedirectToPage("./Lockout");
+                    ModelState.AddModelError(string.Empty, "To konto zostało zablokowane z powodu wielu nieudanych prób logowania. Proszę spróbować ponownie później.");
+                    return Page();
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return Page();
+                    ModelState.AddModelError(string.Empty, "Niepoprawna próba logowania.");
                 }
             }
 
-            // If we got this far, something failed, redisplay form
             return Page();
         }
+
+
+
+
+
+
     }
 }

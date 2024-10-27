@@ -9,18 +9,19 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using ZadanieASP1.Models;
 
 namespace ZadanieASP1.Areas.Identity.Pages.Account.Manage
-{
+{   
     public class ChangePasswordModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<ChangePasswordModel> _logger;
 
         public ChangePasswordModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
             ILogger<ChangePasswordModel> logger)
         {
             _userManager = userManager;
@@ -96,32 +97,62 @@ namespace ZadanieASP1.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            var changePasswordResult = await _userManager.ChangePasswordAsync(user, Input.OldPassword, Input.NewPassword);
-            if (!changePasswordResult.Succeeded)
+            if (ModelState.IsValid)
             {
-                foreach (var error in changePasswordResult.Errors)
+                // Sprawdzenie, czy nowe hasło różni się od poprzednich
+                var passwordHistory = user.PasswordHistories; // Używamy PasswordHistories
+                var hashedNewPassword = _userManager.PasswordHasher.HashPassword(user, Input.NewPassword);
+
+                // Sprawdzenie, czy nowe hasło nie znajduje się w historii haseł
+                if (passwordHistory.Any(ph => ph.HashedPassword == hashedNewPassword))
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    ModelState.AddModelError(string.Empty, "Nowe hasło musi różnić się od poprzednich.");
+                    return Page();
                 }
-                return Page();
+
+                // Dodanie nowego hasła do historii
+                user.PasswordHistories.Add(new PasswordHistory
+                {
+                    UserId = user.Id,
+                    HashedPassword = hashedNewPassword,
+                    DateChanged = DateTime.UtcNow
+                });
+
+                // Ustawienie daty zmiany hasła
+                user.PasswordLastChangedDate = DateTime.UtcNow;
+
+                // Ustawienie daty wygaśnięcia hasła (np. 90 dni)
+                user.PasswordExpiryDate = DateTime.UtcNow.AddDays(90);
+
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    // Zmiana hasła użytkownika
+                    var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                    result = await _userManager.ResetPasswordAsync(user, token, Input.NewPassword);
+
+                    if (result.Succeeded)
+                    {
+                        _logger.LogInformation("User changed their password successfully.");
+                        return RedirectToPage("/Account/Login");
+                    }
+
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                }
             }
 
-            await _signInManager.RefreshSignInAsync(user);
-            _logger.LogInformation("User changed their password successfully.");
-            StatusMessage = "Your password has been changed.";
-
-            return RedirectToPage();
+            return Page();
         }
+
+
     }
 }

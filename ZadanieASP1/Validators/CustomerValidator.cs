@@ -1,21 +1,53 @@
-﻿using FluentValidation;
+﻿using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using ZadanieASP1.Models;
 
 namespace ZadanieASP1.Validators
 {
-    public class CustomerValidator : AbstractValidator<Customer>
+
+    public class CustomPasswordValidator<TUser> : IPasswordValidator<TUser> where TUser : ApplicationUser
     {
-        public CustomerValidator()
+        public Task<IdentityResult> ValidateAsync(UserManager<TUser> manager, TUser user, string password)
         {
-            RuleFor(x => x.FirstName).NotEmpty().WithMessage("The First Name cannot be blank.")
-                                    .Length(3, 100).WithMessage("The First Name cannot be less than 3 characters.");
-            
-            RuleFor(x => x.LastName).NotEmpty().WithMessage("The Last Name cannot be blank.")
-                                    .Length(3, 100).WithMessage("The Last Name cannot be less than 3 characters.");
+          
+            if (user.DisablePasswordRestrictions)
+            {
+                return Task.FromResult(IdentityResult.Success);
+            }
 
-            RuleFor(x => x.PhoneNumber).NotEmpty().WithMessage("The Phone Number cannot be blank.")
-                                   .Matches(@"^\d{3}-\d{3}-\d{3}$").WithMessage("The Phone Number should be in the format xxx-xxx-xxx.");
+            var errors = new List<IdentityError>();
 
+            if (password.Length < 8)
+            {
+                errors.Add(new IdentityError
+                {
+                    Code = "PasswordTooShort",
+                    Description = "Hasło musi mieć co najmniej 8 znaków."
+                });
+            }
+
+            if (!password.Any(char.IsUpper))
+            {
+                errors.Add(new IdentityError
+                {
+                    Code = "PasswordRequiresUppercase",
+                    Description = "Hasło musi zawierać co najmniej jedną wielką literę."
+                });
+            }
+
+            if (!Regex.IsMatch(password, @"[!@#$%^&*(),.?""\:{}|<>]"))
+            {
+                errors.Add(new IdentityError
+                {
+                    Code = "PasswordRequiresSpecialCharacter",
+                    Description = "Hasło musi zawierać co najmniej jeden znak specjalny."
+                });
+            }
+
+            return errors.Count == 0 ? Task.FromResult(IdentityResult.Success) : Task.FromResult(IdentityResult.Failed(errors.ToArray()));
         }
     }
 }

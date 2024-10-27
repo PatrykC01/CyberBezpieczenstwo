@@ -15,29 +15,29 @@ namespace ZadanieASP1.Repository
         }
 
         // Metoda do pobierania wszystkich użytkowników
-        public async Task<IEnumerable<IdentityUser>> GetAllAsync()
+        public async Task<IEnumerable<ApplicationUser>> GetAllAsync()
         {
             // Pobieranie użytkowników z tabeli AspNetUsers
-            return await _context.Users.ToListAsync();
+            return await _context.Users.OfType<ApplicationUser>().ToListAsync();
         }
 
         // Metoda do pobierania użytkownika po identyfikatorze
-        public async Task<IdentityUser?> GetByIdAsync(string userId)
+        public async Task<ApplicationUser?> GetByIdAsync(string userId)
         {
-            var user = await _context.Users
+            var user = await _context.Users.OfType<ApplicationUser>()
                 .FirstOrDefaultAsync(u => u.Id == userId);
 
             return user;
         }
 
         // Metoda dodawania użytkownika (możliwe, że będziesz chciał użyć UserManager do tego celu)
-        public async Task InsertAsync(IdentityUser user)
+        public async Task InsertAsync(ApplicationUser user)
         {
             await _context.Users.AddAsync(user);
         }
 
         // Metoda aktualizacji danych użytkownika
-        public async Task UpdateAsync(IdentityUser user)
+        public async Task UpdateAsync(ApplicationUser user)
         {
             _context.Users.Update(user);
         }

@@ -17,9 +17,9 @@ namespace ZadanieASP1.Controllers
     {
         private readonly IUserRepository _userRepository;
 
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public UsersController(IUserRepository userRepository, UserManager<IdentityUser> userManager)
+        public UsersController(IUserRepository userRepository, UserManager<ApplicationUser> userManager)
         {
             _userRepository = userRepository;
             _userManager = userManager;
@@ -58,7 +58,7 @@ namespace ZadanieASP1.Controllers
         // POST: users/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UserName,Email")] IdentityUser user, string Password)
+        public async Task<IActionResult> Create([Bind("UserName,Email")] ApplicationUser user, string Password)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace ZadanieASP1.Controllers
         // POST: users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,UserName,Email")] IdentityUser user, string? newPassword)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,UserName,Email")] ApplicationUser user, string? newPassword)
         {
             if (id != user.Id)
             {
@@ -192,6 +192,63 @@ namespace ZadanieASP1.Controllers
             return View(user);
         }
 
+        //blokowanie
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> BlockUser(string id)
+        {
+            try
+            {
+                var user = await _userManager.FindByIdAsync(id);
+                if (user == null)
+                {
+                    return Json(new { success = false, message = "Nie znaleziono użytkownika." });
+                }
+
+                user.LockoutEnabled = true;
+                user.LockoutEnd = DateTimeOffset.UtcNow.AddYears(100); // Ustaw blokadę na stałe
+
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    return Json(new { success = true, message = "Użytkownik został zablokowany" });
+                }
+                else
+                {
+                    return Json(new { success = false, message = "Nie udało się zaktualizować użytkownika.", errors = result.Errors });
+                }
+            }
+            catch (Exception ex)
+            {
+                // Zwróć szczegóły błędu, by uzyskać więcej informacji
+                return Json(new { success = false, message = "Wystąpił błąd podczas blokowania użytkownika.", error = ex.Message });
+            }
+        }
+
+        //odblokowoanie
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UnblockUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user != null)
+            {
+                user.LockoutEnd = null; // Usunięcie blokady
+                await _userManager.ResetAccessFailedCountAsync(user); // Zresetowanie liczby nieudanych prób
+                var result = await _userManager.UpdateAsync(user);
+
+                if (result.Succeeded)
+                {
+                    return Json(new { success = true, message = "Użytkownik został odblokowany" });
+                }
+            }
+            return Json(new { success = false, message = "Nie udało się odblokować użytkownika" });
+        }
+
+
         // POST: users/Delete/5
         [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
@@ -208,5 +265,28 @@ namespace ZadanieASP1.Controllers
 
             return NotFound();
         }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> TogglePasswordRestrictions(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user != null)
+            {
+                // Przełącz stan DisablePasswordRestrictions
+                user.DisablePasswordRestrictions = !user.DisablePasswordRestrictions;
+                var result = await _userManager.UpdateAsync(user);
+
+                if (result.Succeeded)
+                {
+                    var status = user.DisablePasswordRestrictions ? "disabled" : "enabled";
+                    return Json(new { success = true, message = $"Password restrictions have been {status} for the user." });
+                }
+            }
+            return Json(new { success = false, message = "Failed to toggle password restrictions." });
+        }
+
+
     }
 }

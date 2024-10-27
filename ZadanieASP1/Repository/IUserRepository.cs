@@ -6,16 +6,18 @@ namespace ZadanieASP1.Repository
     public interface IUserRepository
     {
         
-        Task<IEnumerable<IdentityUser>> GetAllAsync();
+        Task<IEnumerable<ApplicationUser>> GetAllAsync();
        
-        Task<IdentityUser?> GetByIdAsync(string userId);
+        Task<ApplicationUser?> GetByIdAsync(string userId);
         
-        Task InsertAsync(IdentityUser identityUser);
+        Task InsertAsync(ApplicationUser identityUser);
         
-        Task UpdateAsync(IdentityUser identityUser);
+        Task UpdateAsync(ApplicationUser identityUser);
       
         Task DeleteAsync(string userId);
         
         Task SaveAsync();
+
+
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HKrtqQ4JIHQ=",
+  "dgSpecHash": "7mxOKZiMGQQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\20pat\\OneDrive\\Pulpit\\Szkoła\\PdIwtA\\ZadanieASP1\\UITestingProject\\UITestingProject.csproj",
+  "projectFilePath": "C:\\Users\\20pat\\OneDrive\\Pulpit\\CYB\\bezpieczenstwo\\CyberBezpieczenstwo\\UITestingProject\\UITestingProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\20pat\\.nuget\\packages\\anglesharp\\1.1.0\\anglesharp.1.1.0.nupkg.sha512",
     "C:\\Users\\20pat\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",

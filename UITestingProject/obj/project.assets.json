@@ -14512,11 +14512,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\20pat\\OneDrive\\Pulpit\\Szkoła\\PdIwtA\\ZadanieASP1\\UITestingProject\\UITestingProject.csproj",
+      "projectUniqueName": "C:\\Users\\20pat\\OneDrive\\Pulpit\\CYB\\bezpieczenstwo\\CyberBezpieczenstwo\\UITestingProject\\UITestingProject.csproj",
       "projectName": "UITestingProject",
-      "projectPath": "C:\\Users\\20pat\\OneDrive\\Pulpit\\Szkoła\\PdIwtA\\ZadanieASP1\\UITestingProject\\UITestingProject.csproj",
+      "projectPath": "C:\\Users\\20pat\\OneDrive\\Pulpit\\CYB\\bezpieczenstwo\\CyberBezpieczenstwo\\UITestingProject\\UITestingProject.csproj",
       "packagesPath": "C:\\Users\\20pat\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\20pat\\OneDrive\\Pulpit\\Szkoła\\PdIwtA\\ZadanieASP1\\UITestingProject\\obj\\",
+      "outputPath": "C:\\Users\\20pat\\OneDrive\\Pulpit\\CYB\\bezpieczenstwo\\CyberBezpieczenstwo\\UITestingProject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\20pat\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -14534,8 +14534,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\20pat\\OneDrive\\Pulpit\\Szkoła\\PdIwtA\\ZadanieASP1\\ZadanieASP1\\ZadanieASP1.csproj": {
-              "projectPath": "C:\\Users\\20pat\\OneDrive\\Pulpit\\Szkoła\\PdIwtA\\ZadanieASP1\\ZadanieASP1\\ZadanieASP1.csproj"
+            "C:\\Users\\20pat\\OneDrive\\Pulpit\\CYB\\bezpieczenstwo\\CyberBezpieczenstwo\\ZadanieASP1\\ZadanieASP1.csproj": {
+              "projectPath": "C:\\Users\\20pat\\OneDrive\\Pulpit\\CYB\\bezpieczenstwo\\CyberBezpieczenstwo\\ZadanieASP1\\ZadanieASP1.csproj"
             }
           }
         }

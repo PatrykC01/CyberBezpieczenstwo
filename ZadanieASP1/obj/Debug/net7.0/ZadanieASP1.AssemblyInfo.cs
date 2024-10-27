@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ZadanieASP1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+853fc842548744245ad6cd722b788da03efda441")]
 [assembly: System.Reflection.AssemblyProductAttribute("ZadanieASP1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ZadanieASP1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

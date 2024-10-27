@@ -1,10 +1,10 @@
-﻿@model IEnumerable<IdentityUser>
+﻿@model IEnumerable<ApplicationUser>
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista użytkowników";
 }
 
 <h1>@Localizer["User List"]</h1>
@@ -36,9 +36,74 @@
                     <td style="text-align: center;">
                         <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">@Localizer["Edit"]</a>
                         <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">@Localizer["Delete"]</a>
+                        <a class="btn btn-info" onclick="togglePasswordRestrictions('@item.Id')">
+                            @(item.DisablePasswordRestrictions ? "Enable Password Restrictions" : "Disable Password Restrictions")
+                        </a>
+                        <a class="btn btn-warning" onclick="blockUser('@item.Id')">@Localizer["Block User"]</a>
+                        <a class="btn btn-success" onclick="unblockUser('@item.Id')">@Localizer["Unblock User"]</a>
                     </td>
                 </tr>
             }
+
         </tbody>
     </table>
 </div>
+
+<script>
+    function blockUser(userId) {
+        if (confirm("Czy na pewno chcesz zablokować tego użytkownika?")) {
+            $.ajax({
+                url: '@Url.Action("BlockUser", "Users")',
+                type: 'POST',
+                headers: {
+                    'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                },
+                data: { id: userId },
+                success: function (response) {
+                    alert(response.message);
+                },
+                error: function () {
+                    alert("Wystąpił błąd podczas próby zablokowania użytkownika.");
+                }
+            });
+        }
+    }
+
+    function unblockUser(userId) {
+        if (confirm("Czy na pewno chcesz odblokować tego użytkownika?")) {
+            $.ajax({
+                url: '@Url.Action("UnblockUser", "Users")',
+                type: 'POST',
+                headers: {
+                    'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                },
+                data: { id: userId },
+                success: function (response) {
+                    alert(response.message);
+                },
+                error: function () {
+                    alert("Wystąpił błąd podczas próby odblokowania użytkownika.");
+                }
+            });
+        }
+    }
+
+    function togglePasswordRestrictions(userId) {
+        $.ajax({
+            url: '@Url.Action("TogglePasswordRestrictions", "Users")',
+            type: 'POST',
+            headers: {
+                'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+            },
+            data: { id: userId },
+            success: function (response) {
+                alert(response.message);
+                location.reload(); 
+            },
+            error: function () {
+                alert("An error occurred while trying to toggle password restrictions.");
+            }
+        });
+    }
+
+</script>
